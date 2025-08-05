@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Dynamic Color Variables */
+:root {
+  /* Default colors (fallback) */
+  --color-primary: #007BFF;
+  --color-primary-rgb: 0, 123, 255;
+  --color-accent: #0056CC;
+  --color-accent-rgb: 0, 86, 204;
+  --color-text-primary: #ffffff;
+  
+  /* Background gradients */
+  --bg-gradient-1: #007BFF;
+  --bg-gradient-2: #0099FF;
+  --bg-gradient-3: #0056CC;
+  
+  /* Opacity values */
+  --bg-primary-opacity: 0.2;
+  
+  /* Shadow colors */
+  --shadow-primary: #007BFF40;
+  --shadow-accent: #0056CC60;
+  
+  /* Border colors */
+  --border-primary: #007BFF50;
+  --border-accent: #0056CC70;
+}
+
+/* Dynamic Theme Utilities */
+.dynamic-bg-primary {
+  background-color: var(--color-primary);
+}
+
+.dynamic-bg-primary-opacity {
+  background-color: rgba(var(--color-primary-rgb), var(--bg-primary-opacity));
+}
+
+.dynamic-bg-accent {
+  background-color: var(--color-accent);
+}
+
+.dynamic-text-primary {
+  color: var(--color-primary);
+}
+
+.dynamic-text-accent {
+  color: var(--color-accent);
+}
+
+.dynamic-border-primary {
+  border-color: var(--border-primary);
+}
+
+.dynamic-border-accent {
+  border-color: var(--border-accent);
+}
+
+.dynamic-shadow-primary {
+  box-shadow: 0 8px 32px var(--shadow-primary);
+}
+
+.dynamic-shadow-accent {
+  box-shadow: 0 4px 16px var(--shadow-accent);
+}
+
+.dynamic-glow-primary {
+  text-shadow: 0 0 10px var(--color-primary), 0 0 20px var(--color-primary);
+}
+
+.dynamic-glow-accent {
+  text-shadow: 0 0 8px var(--color-accent);
+}
+
+/* Dynamic gradient backgrounds */
+.dynamic-gradient-1 {
+  background: linear-gradient(135deg, var(--bg-gradient-1), var(--bg-gradient-2));
+}
+
+.dynamic-gradient-2 {
+  background: linear-gradient(45deg, var(--color-primary), var(--color-accent));
+}
+
+.dynamic-gradient-3 {
+  background: linear-gradient(90deg, 
+    rgba(var(--color-primary-rgb), 0.8), 
+    rgba(var(--color-accent-rgb), 0.6)
+  );
+}
+
+/* Animated gradients */
+.dynamic-gradient-animated {
+  background: linear-gradient(
+    -45deg,
+    var(--bg-gradient-1),
+    var(--bg-gradient-2),
+    var(--bg-gradient-3),
+    var(--color-accent)
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Dynamic hover effects */
+.dynamic-hover:hover {
+  color: var(--color-primary);
+  transform: scale(1.05);
+  text-shadow: 0 0 15px var(--color-primary);
+}
+
+.dynamic-hover-accent:hover {
+  color: var(--color-accent);
+  transform: scale(1.05);
+  text-shadow: 0 0 12px var(--color-accent);
+}
+
+.dynamic-button {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  border: 2px solid var(--border-primary);
+  box-shadow: var(--shadow-primary);
+  transition: all 0.3s ease;
+}
+
+.dynamic-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px var(--shadow-primary);
+}
+
+/* Dynamic glass effects */
+.dynamic-glass {
+  background: rgba(var(--color-primary-rgb), 0.1);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+  box-shadow: 0 8px 32px rgba(var(--color-primary-rgb), 0.3);
+}
+
+.dynamic-glass-accent {
+  background: rgba(var(--color-accent-rgb), 0.1);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.2);
+  box-shadow: 0 8px 32px rgba(var(--color-accent-rgb), 0.3);
+}
+
+/* Dynamic loading animations */
+.dynamic-pulse-primary {
+  animation: pulse-primary 2s ease-in-out infinite;
+}
+
+.dynamic-pulse-accent {
+  animation: pulse-accent 2s ease-in-out infinite;
+}
+
+@keyframes pulse-primary {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0.7);
+  }
+  70% { 
+    box-shadow: 0 0 0 10px rgba(var(--color-primary-rgb), 0);
+  }
+}
+
+@keyframes pulse-accent {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 rgba(var(--color-accent-rgb), 0.7);
+  }
+  70% { 
+    box-shadow: 0 0 0 10px rgba(var(--color-accent-rgb), 0);
+  }
+}
+
+/* Dynamic text effects */
+.dynamic-text-glow {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 8px var(--color-primary));
+}
+
+/* Dynamic responsiveness */
+@media (max-width: 768px) {
+  .dynamic-glass {
+    backdrop-filter: blur(12px);
+  }
+  
+  .dynamic-shadow-primary {
+    box-shadow: 0 4px 16px var(--shadow-primary);
+  }
+}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Avatar Auto-Update Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #2c2f33;
+            color: white;
+            padding: 20px;
+        }
+        .avatar-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .discord-avatar {
+            width: 128px;
+            height: 128px;
+            border-radius: 50%;
+            border: 3px solid #7289da;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .discord-avatar:hover {
+            border-color: #99aab5;
+            transform: scale(1.05);
+        }
+        .loading {
+            opacity: 0.6;
+            filter: blur(1px);
+        }
+        .last-updated {
+            color: #99aab5;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        .refresh-btn {
+            background: #7289da;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .refresh-btn:hover {
+            background: #677bc4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Discord Avatar Auto-Update Demo</h1>
+    
+    <!-- Method 1: Direct HTML with auto-refresh -->
+    <div class="avatar-container">
+        <h2>Method 1: Simple HTML Image</h2>
+        <img id="discord-avatar-simple" 
+             src="https://your-domain.replit.app/api/discord-avatar?userId=394912002843344898" 
+             alt="Discord Avatar" 
+             class="discord-avatar"
+             onclick="refreshAvatar('discord-avatar-simple')">
+        <div class="last-updated" id="last-updated-simple">Click avatar to refresh</div>
+    </div>
+
+    <!-- Method 2: JavaScript-enhanced with error handling -->
+    <div class="avatar-container">
+        <h2>Method 2: Enhanced with JavaScript</h2>
+        <img id="discord-avatar-js" 
+             src="" 
+             alt="Discord Avatar" 
+             class="discord-avatar"
+             onclick="loadAvatarWithJS()">
+        <div class="last-updated" id="last-updated-js">Loading...</div>
+        <button class="refresh-btn" onclick="loadAvatarWithJS()">Refresh Avatar</button>
+    </div>
+
+    <!-- Method 3: Third-party API (Backup) -->
+    <div class="avatar-container">
+        <h2>Method 3: Using Discord CDN directly</h2>
+        <img id="discord-avatar-cdn" 
+             src="https://cdn.discordapp.com/embed/avatars/3.png" 
+             alt="Discord Avatar (Default)" 
+             class="discord-avatar">
+        <div class="last-updated">Default Discord avatar (fallback)</div>
+    </div>
+
+    <script>
+        // Configuration
+        const DISCORD_USER_ID = '394912002843344898';
+        const API_BASE_URL = window.location.origin; // Uses current domain
+        
+        // Method 1: Simple refresh function
+        function refreshAvatar(imgId) {
+            const img = document.getElementById(imgId);
+            const timestamp = Date.now();
+            img.classList.add('loading');
+            
+            // Add cache-busting timestamp
+            img.src = `${API_BASE_URL}/api/discord-avatar?userId=${DISCORD_USER_ID}&t=${timestamp}`;
+            
+            img.onload = function() {
+                img.classList.remove('loading');
+                document.getElementById('last-updated-simple').textContent = 
+                    `Last updated: ${new Date().toLocaleTimeString()}`;
+            };
+        }
+
+        // Method 2: Enhanced JavaScript with error handling
+        async function loadAvatarWithJS() {
+            const img = document.getElementById('discord-avatar-js');
+            const statusDiv = document.getElementById('last-updated-js');
+            
+            img.classList.add('loading');
+            statusDiv.textContent = 'Loading...';
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/discord-avatar?userId=${DISCORD_USER_ID}&t=${Date.now()}`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                img.src = data.avatarUrl;
+                img.alt = `${data.username}'s Discord Avatar`;
+                
+                statusDiv.textContent = `${data.username} - Updated: ${new Date().toLocaleTimeString()}`;
+                
+            } catch (error) {
+                console.error('Error loading avatar:', error);
+                img.src = 'https://cdn.discordapp.com/embed/avatars/0.png'; // Fallback
+                statusDiv.textContent = 'Failed to load - using fallback';
+            }
+            
+            img.classList.remove('loading');
+        }
+
+        // Auto-refresh every 30 seconds
+        function startAutoRefresh() {
+            setInterval(() => {
+                loadAvatarWithJS();
+                // Also refresh the simple one
+                refreshAvatar('discord-avatar-simple');
+            }, 30000); // 30 seconds
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAvatarWithJS();
+            startAutoRefresh();
+        });
+    </script>
+</body>
+</html>

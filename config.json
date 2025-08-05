@@ -1,0 +1,126 @@
+
+{
+  "project": {
+    "name": "LoRd ",
+    "version": "1.0.0",
+    "description": "LoRd WorLd",
+    "author": "LORDX679",
+    "type": "portfolio-website"
+  },
+  "server": {
+    "port": 5000,
+    "host": "0.0.0.0",
+    "environment": "development",
+    "cors": {
+      "enabled": true,
+      "origins": ["http://localhost:5000", "https://*.replit.app", "https://*.replit.dev"]
+    }
+  },
+  "database": {
+    "provider": "neon",
+    "type": "postgresql",
+    "ssl": true,
+    "connection_timeout": 30000,
+    "query_timeout": 60000
+  },
+  "discord": {
+    "api_version": "v10",
+    "base_url": "https://discord.com/api",
+    "cdn_url": "https://cdn.discordapp.com",
+    "cache_duration": 300,
+    "retry_attempts": 3,
+    "timeout": 5000
+  },
+  "frontend": {
+    "theme": {
+      "primary_color": "#007BFF",
+      "background": "#000000",
+      "text_primary": "#FFFFFF",
+      "text_secondary": "#B0B0B0",
+      "accent": "#0056CC",
+      "glow_color": "rgba(0,123,255,0.3)"
+    },
+    "animations": {
+      "enabled": true,
+      "duration": 300,
+      "easing": "ease-in-out"
+    },
+    "effects": {
+      "glassmorphism": true,
+      "shadows": true,
+      "glows": true,
+      "backdrop_blur": true
+    }
+  },
+  "features": {
+    "dynamic_avatar": {
+      "enabled": true,
+      "refresh_interval": 30000,
+      "fallback_avatar": "https://cdn.discordapp.com/embed/avatars/0.png"
+    },
+    "session_management": {
+      "enabled": true,
+      "secret_key_required": true,
+      "max_age": 86400000
+    },
+    "auto_deployment": {
+      "enabled": true,
+      "build_command": "npm run build",
+      "start_command": "npm run start"
+    }
+  },
+  "security": {
+    "helmet": {
+      "enabled": true,
+      "content_security_policy": false
+    },
+    "rate_limiting": {
+      "enabled": true,
+      "window_ms": 900000,
+      "max_requests": 100
+    },
+    "secrets": {
+      "required": [
+
+        "postgresql://neondb_owner:npg_BGPd7s8JwoUx@ep-nameless-cherry-a2rby9xb.eu-central-1.aws.neon.tech/neondb?sslmode=require"
+      ],
+      "optional": [
+        "postgresql://neondb_owner:npg_BGPd7s8JwoUx@ep-nameless-cherry-a2rby9xb.eu-central-1.aws.neon.tech/neondb?sslmode=require",
+        "SESSION_SECRET"
+      ]
+    }
+  },
+  "development": {
+    "hot_reload": true,
+    "source_maps": true,
+    "debug_mode": true,
+    "auto_install": true
+  },
+  "production": {
+    "minify": true,
+    "compression": true,
+    "caching": true,
+    "error_reporting": false
+  },
+  "api": {
+    "base_path": "/api",
+    "version": "v1",
+    "endpoints": {
+      "discord_avatar": "/discord-avatar",
+      "user_data": "/user",
+      "health": "/health"
+    }
+  },
+  "build": {
+    "output_dir": "dist",
+    "assets_dir": "client/public",
+    "target": "es2020",
+    "format": "esm"
+  },
+  "logging": {
+    "level": "info",
+    "format": "combined",
+    "file_logging": false,
+    "console_logging": true
+  }
+}
