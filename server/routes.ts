@@ -1,6 +1,5 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Discord avatar API route with enhanced fallback methods
@@ -37,13 +36,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
             const userData = await discordResponse.json();
             console.log('Discord user data received:', { 
               username: userData.username, 
-              avatar: userData.avatar ? 'Present' : 'None',
-              discriminator: userData.discriminator 
+              avatar: userData.avatar,
+              discriminator: userData.discriminator
             });
             
-            const avatarUrl = userData.avatar 
-              ? `https://cdn.discordapp.com/avatars/${userId}/${userData.avatar}.png?size=256&t=${timestamp}`
-              : `https://cdn.discordapp.com/embed/avatars/${parseInt(userData.discriminator) % 5}.png`;
+            // If we got the avatar hash, use it with proper format detection
+            let avatarUrl;
+            if (userData.avatar) {
+              // Check if it's animated (starts with a_)
+              const isAnimated = userData.avatar.startsWith('a_');
+              const extension = isAnimated ? 'gif' : 'png';
+              avatarUrl = `https://cdn.discordapp.com/avatars/${userId}/${userData.avatar}.${extension}?size=256&t=${timestamp}`;
+              console.log(`Generated avatar URL: ${avatarUrl}`);
+            } else {
+              avatarUrl = `https://cdn.discordapp.com/embed/avatars/${parseInt(userData.discriminator) % 5}.png`;
+            }
 
             res.set({
               'Cache-Control': 'no-cache, no-store, must-revalidate',
