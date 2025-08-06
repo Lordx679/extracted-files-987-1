@@ -170,7 +170,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         if (lookupResponse.ok) {
           const lookupData = await lookupResponse.json();
           if (lookupData.avatar && lookupData.avatar.link) {
-            console.log('Found avatar via lookup service');
+            console.log('Found avatar via lookup service:', lookupData.avatar.link);
             return res.json({
               avatarUrl: lookupData.avatar.link,
               username: lookupData.username || 'LORDX679',
