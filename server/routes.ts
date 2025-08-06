@@ -6,7 +6,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Discord avatar API route with enhanced fallback methods
   app.get('/api/discord-avatar', async (req, res) => {
     try {
-      const userId = req.query.userId as string;
+      // Use the actual Discord User ID for LORDX679
+      const userId = req.query.userId as string || '394912002843344898';
 
       if (!userId) {
         return res.status(400).json({ 
@@ -97,15 +98,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const knownAvatarHash = process.env.DISCORD_AVATAR_HASH;
       
       if (knownAvatarHash) {
+        console.log(`Using known avatar hash: ${knownAvatarHash}`);
         const realAvatarUrl = `https://cdn.discordapp.com/avatars/${userId}/${knownAvatarHash}.png?size=256&t=${timestamp}`;
         
-        return res.json({
-          avatarUrl: realAvatarUrl,
-          username: 'LORDX679',
-          discriminator: '0000',
-          lastUpdated: timestamp,
-          method: 'known_hash'
-        });
+        // Verify the avatar URL works before returning it
+        try {
+          const testResponse = await fetch(realAvatarUrl, { method: 'HEAD' });
+          if (testResponse.ok) {
+            return res.json({
+              avatarUrl: realAvatarUrl,
+              username: 'LORDX679',
+              discriminator: '0000',
+              lastUpdated: timestamp,
+              method: 'known_hash',
+              hasRealAvatar: true
+            });
+          }
+        } catch (testError) {
+          console.log('Known avatar hash verification failed, continuing to other methods');
+        }
       }
 
       // Method 5: Try common Discord avatar formats for your user ID
@@ -136,6 +147,37 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
       }
 
+      // Final fallback: Use a better fallback that might actually work
+      // Try some common Discord CDN patterns for the specific user
+      const potentialHashes = [
+        'a_animated_hash_example', // For animated avatars
+        'static_hash_example',     // For static avatars
+      ];
+
+      // Method 6: Try to fetch user info using a different approach
+      try {
+        // Use Discord's public API endpoints that don't require bot token
+        const publicUserUrl = `https://discordlookup.mesaliko.com/user/${userId}`;
+        const lookupResponse = await fetch(publicUserUrl);
+        
+        if (lookupResponse.ok) {
+          const lookupData = await lookupResponse.json();
+          if (lookupData.avatar && lookupData.avatar.link) {
+            console.log('Found avatar via lookup service');
+            return res.json({
+              avatarUrl: lookupData.avatar.link,
+              username: lookupData.username || 'LORDX679',
+              discriminator: lookupData.discriminator || '0000',
+              lastUpdated: timestamp,
+              method: 'lookup_service',
+              hasRealAvatar: true
+            });
+          }
+        }
+      } catch (lookupError) {
+        console.log('Lookup service failed, using default fallback');
+      }
+
       // Final fallback: Default avatar
       const defaultAvatarIndex = parseInt(userId) % 5;
       const defaultAvatarUrl = `https://cdn.discordapp.com/embed/avatars/${defaultAvatarIndex}.png?t=${timestamp}`;
@@ -146,7 +188,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         discriminator: '0000',
         lastUpdated: timestamp,
         method: 'default_fallback',
-        message: 'لعرض صورتك الحقيقية، يرجى إضافة DISCORD_BOT_TOKEN أو DISCORD_AVATAR_HASH في الـ secrets'
+        hasRealAvatar: false,
+        message: 'لعرض صورتك الحقيقية، راجع ملف GET_YOUR_DISCORD_INFO.md لمعرفة كيفية الحصول على DISCORD_AVATAR_HASH'
       });
 
     } catch (error) {
