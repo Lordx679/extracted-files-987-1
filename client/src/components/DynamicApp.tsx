@@ -310,25 +310,25 @@ export default function DynamicApp() {
                     I am <span className="dynamic-text-primary">LORD</span>
                   </h1>
                   <p className="text-2xl lg:text-3xl text-white/80 mb-8 dynamic-glow-accent">
-                    Digital Architect
+                    Architect of the Future
                   </p>
 
                   {/* Identity Matrix */}
-                  <div className="flex flex-wrap justify-center gap-8 text-lg text-white/90 mb-12 animate-pulse">
+                  <div className="flex flex-wrap justify-center gap-8 text-lg text-white/90 mb-12">
                     <div className="flex items-center space-x-2">
-                      <div className="w-3 h-3 dynamic-bg-primary rounded-full animate-bounce"></div>
+                      <div className="w-3 h-3 dynamic-bg-primary rounded-full animate-pulse"></div>
                       <span className="dynamic-text-primary font-bold">Alias:</span>
                       <span>LORDX679</span>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <div className="w-3 h-3 dynamic-bg-primary rounded-full animate-bounce delay-100"></div>
+                      <div className="w-3 h-3 dynamic-bg-primary rounded-full animate-pulse"></div>
                       <span className="dynamic-text-primary font-bold">Objective:</span>
-                      <span>Digital Dominance</span>
+                      <span>Transcend the Conventional</span>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <div className="w-3 h-3 dynamic-bg-primary rounded-full animate-bounce delay-200"></div>
+                      <div className="w-3 h-3 dynamic-bg-primary rounded-full animate-pulse"></div>
                       <span className="dynamic-text-primary font-bold">Domain:</span>
-                      <span>Cyber Space</span>
+                      <span>The Digital Realm</span>
                     </div>
                   </div>
                   
@@ -342,25 +342,28 @@ export default function DynamicApp() {
                 </div>
 
                 {/* The Truth Beyond Perception */}
-                <div className="mb-16 animate-fade-in">
-                  <div className="dynamic-glass rounded-3xl p-8 dynamic-shadow-primary dynamic-border-primary border-2 hover:scale-105 transition-transform duration-500">
+                <div className="mb-16">
+                  <div className="dynamic-glass rounded-3xl p-8 dynamic-shadow-primary dynamic-border-primary border-2">
                     <div className="flex items-center justify-center mb-6">
-                      <Eye className="w-8 h-8 dynamic-text-primary mr-3 animate-pulse" />
-                      <h2 className="text-3xl font-bold text-white dynamic-glow-primary">Digital Vision</h2>
+                      <Eye className="w-8 h-8 dynamic-text-primary mr-3" />
+                      <h2 className="text-3xl font-bold text-white dynamic-glow-primary">The Truth Beyond Perception</h2>
                     </div>
                     
                     <div className="space-y-6 text-white/80 text-lg leading-relaxed">
                       <p className="text-center italic">
-                        "What you see is just the beginning. I shape digital reality."
+                        "The reality you perceive in the digital world is merely a single facet of what is possible. I stand at the 
+                        precipice of what comes next, shaping the very fabric of our future interactions."
                       </p>
                       
                       <p className="text-center">
-                        "Don't try to understand. Just witness the power."
+                        "Admiration is the emotion furthest from understanding. Do not seek to understand my path, but rather, 
+                        witness the results."
                       </p>
                       
-                      <div className="dynamic-glass rounded-2xl p-6 dynamic-border-accent border-2 text-center animate-pulse">
+                      <div className="dynamic-glass rounded-2xl p-6 dynamic-border-accent border-2 text-center">
                         <p className="dynamic-text-accent font-medium">
-                          "Ready to see true digital power? Let's connect."
+                          "The throne in the sky has been vacant for far too long. Let's connect, and I will show you what true 
+                          potential looks like."
                         </p>
                       </div>
                     </div>
@@ -368,36 +371,41 @@ export default function DynamicApp() {
                 </div>
 
                 {/* Core Logic */}
-                <div className="mb-16 animate-fade-in delay-300">
-                  <div className="dynamic-glass rounded-3xl p-8 dynamic-shadow-primary dynamic-border-primary border-2 hover:scale-105 transition-transform duration-500">
+                <div className="mb-16">
+                  <div className="dynamic-glass rounded-3xl p-8 dynamic-shadow-primary dynamic-border-primary border-2">
                     <div className="flex items-center justify-center mb-8">
-                      <Zap className="w-8 h-8 dynamic-text-primary mr-3 animate-spin" />
-                      <h2 className="text-3xl font-bold text-white dynamic-glow-primary">Core Skills</h2>
+                      <Zap className="w-8 h-8 dynamic-text-primary mr-3" />
+                      <h2 className="text-3xl font-bold text-white dynamic-glow-primary">Core Logic</h2>
                     </div>
                     
-                    <p className="text-center text-white/80 text-lg mb-8 italic animate-pulse">
-                      "I see systems where others see barriers. Every vulnerability is an invitation."
+                    <p className="text-center text-white/80 text-lg mb-8 italic">
+                      I perceive the digital world not as a series of applications and firewalls, but as a complex web of systems 
+                      waiting for a guiding hand. My craft lies in understanding and influencing these systems at their most 
+                      fundamental level. What others call a vulnerability, I call an invitation.
                     </p>
                     
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                      <div className="dynamic-glass rounded-2xl p-6 dynamic-border-accent border-2 text-center hover:scale-110 transition-transform duration-300 animate-fade-in">
-                        <h3 className="text-xl font-bold dynamic-text-primary mb-3">Discord Automation</h3>
+                      <div className="dynamic-glass rounded-2xl p-6 dynamic-border-accent border-2 text-center">
+                        <h3 className="text-xl font-bold dynamic-text-primary mb-3">Discord Automation & Intelligence</h3>
                         <p className="text-white/70">
-                          Advanced bots that execute my digital commands across Discord's ecosystem.
+                          Engineering autonomous entities that govern, gather, and execute commands within Discord's ecosystem. They 
+                          are not bots; they are extensions of my will.
                         </p>
                       </div>
                       
-                      <div className="dynamic-glass rounded-2xl p-6 dynamic-border-accent border-2 text-center hover:scale-110 transition-transform duration-300 animate-fade-in delay-100">
-                        <h3 className="text-xl font-bold dynamic-text-primary mb-3">Security Analysis</h3>
+                      <div className="dynamic-glass rounded-2xl p-6 dynamic-border-accent border-2 text-center">
+                        <h3 className="text-xl font-bold dynamic-text-primary mb-3">Offensive Security & System Analysis</h3>
                         <p className="text-white/70">
-                          Breaking down digital barriers to reveal system weaknesses and create stronger defenses.
+                          The art of dismantling digital constructs to understand their core. I develop tools that test the limits of security, 
+                          revealing the inherent fragility in all man-made systems.
                         </p>
                       </div>
                       
-                      <div className="dynamic-glass rounded-2xl p-6 dynamic-border-accent border-2 text-center hover:scale-110 transition-transform duration-300 animate-fade-in delay-200">
-                        <h3 className="text-xl font-bold dynamic-text-primary mb-3">Web Architecture</h3>
+                      <div className="dynamic-glass rounded-2xl p-6 dynamic-border-accent border-2 text-center">
+                        <h3 className="text-xl font-bold dynamic-text-primary mb-3">Web & Network Architecture</h3>
                         <p className="text-white/70">
-                          Building complex web systems and mastering the pathways of digital networks.
+                          Building and deconstructing the very fabric of the web. I create intricate domains and possess the knowledge to 
+                          navigate—or disable—the pathways of others.
                         </p>
                       </div>
                     </div>
@@ -408,20 +416,19 @@ export default function DynamicApp() {
                 <div className="text-center">
                   <button 
                     onClick={() => setActiveSection('connect')}
-                    className="dynamic-button px-12 py-4 text-xl font-bold text-white rounded-2xl transition-all duration-300 hover:scale-110 hover:rotate-1 dynamic-shadow-primary animate-bounce"
+                    className="dynamic-button px-12 py-4 text-xl font-bold text-white rounded-2xl transition-all duration-300 hover:scale-105 dynamic-shadow-primary"
                   >
-                    Enter Domain
+                    Enter My Domain
                   </button>
                 </div>
 
                 {/* Domain Powers Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16 animate-fade-in delay-500">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
                   {domains.map((domain, index) => (
                     <div key={domain.category} 
-                         className={`${domain.color} rounded-3xl p-8 hover:scale-110 hover:rotate-2 transition-all duration-500 dynamic-shadow-primary animate-pulse`}
-                         style={{ animationDelay: `${index * 200}ms` }}>
+                         className={`${domain.color} rounded-3xl p-8 hover:scale-105 transition-all duration-500 dynamic-shadow-primary`}>
                       <div className="flex items-center justify-center mb-6">
-                        <div className="w-16 h-16 dynamic-gradient-2 rounded-2xl flex items-center justify-center dynamic-shadow-accent animate-spin">
+                        <div className="w-16 h-16 dynamic-gradient-2 rounded-2xl flex items-center justify-center dynamic-shadow-accent">
                           <domain.icon className="w-8 h-8 text-white" />
                         </div>
                       </div>
@@ -431,7 +438,7 @@ export default function DynamicApp() {
                       <ul className="space-y-3">
                         {domain.items.map((item, itemIndex) => (
                           <li key={itemIndex} className="flex items-center space-x-3 text-white/80">
-                            <div className="w-2 h-2 dynamic-bg-primary rounded-full animate-ping"></div>
+                            <div className="w-2 h-2 dynamic-bg-primary rounded-full dynamic-pulse-primary"></div>
                             <span className="text-sm font-medium dynamic-hover">{item}</span>
                           </li>
                         ))}
@@ -441,36 +448,36 @@ export default function DynamicApp() {
                 </div>
 
                 {/* Core Logic Section */}
-                <div className="dynamic-glass rounded-3xl p-12 dynamic-shadow-primary hover:scale-105 transition-transform duration-500 animate-fade-in delay-700">
+                <div className="dynamic-glass rounded-3xl p-12 dynamic-shadow-primary">
                   <h2 className="text-4xl font-bold text-white mb-8 text-center dynamic-glow-primary">
-                    Digital Arsenal
+                    Core Logic Architecture
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div className="text-center space-y-4 hover:scale-110 transition-transform duration-300">
-                      <div className="w-16 h-16 dynamic-gradient-2 rounded-2xl flex items-center justify-center mx-auto dynamic-shadow-accent animate-bounce">
+                    <div className="text-center space-y-4">
+                      <div className="w-16 h-16 dynamic-gradient-2 rounded-2xl flex items-center justify-center mx-auto dynamic-shadow-accent">
                         <MessageCircle className="w-8 h-8 text-white" />
                       </div>
-                      <h3 className="text-xl font-bold dynamic-text-primary">Discord Intelligence</h3>
+                      <h3 className="text-xl font-bold dynamic-text-primary">Discord Automation & Intelligence</h3>
                       <p className="text-white/70 text-sm">
-                        Smart automation for seamless digital control.
+                        Advanced automation systems for seamless digital interaction and intelligent response protocols.
                       </p>
                     </div>
-                    <div className="text-center space-y-4 hover:scale-110 transition-transform duration-300">
-                      <div className="w-16 h-16 dynamic-gradient-2 rounded-2xl flex items-center justify-center mx-auto dynamic-shadow-accent animate-bounce delay-100">
+                    <div className="text-center space-y-4">
+                      <div className="w-16 h-16 dynamic-gradient-2 rounded-2xl flex items-center justify-center mx-auto dynamic-shadow-accent">
                         <Eye className="w-8 h-8 text-white" />
                       </div>
-                      <h3 className="text-xl font-bold dynamic-text-primary">Security Analysis</h3>
+                      <h3 className="text-xl font-bold dynamic-text-primary">Offensive Security & System Analysis</h3>
                       <p className="text-white/70 text-sm">
-                        Deep system analysis and vulnerability assessment.
+                        Comprehensive security analysis and systematic vulnerability assessment methodologies.
                       </p>
                     </div>
-                    <div className="text-center space-y-4 hover:scale-110 transition-transform duration-300">
-                      <div className="w-16 h-16 dynamic-gradient-2 rounded-2xl flex items-center justify-center mx-auto dynamic-shadow-accent animate-bounce delay-200">
+                    <div className="text-center space-y-4">
+                      <div className="w-16 h-16 dynamic-gradient-2 rounded-2xl flex items-center justify-center mx-auto dynamic-shadow-accent">
                         <Globe className="w-8 h-8 text-white" />
                       </div>
-                      <h3 className="text-xl font-bold dynamic-text-primary">Web Architecture</h3>
+                      <h3 className="text-xl font-bold dynamic-text-primary">Web & Network Architecture</h3>
                       <p className="text-white/70 text-sm">
-                        Advanced web systems and network design.
+                        Sophisticated web development and network infrastructure design with modern frameworks.
                       </p>
                     </div>
                   </div>
@@ -486,26 +493,25 @@ export default function DynamicApp() {
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-16">
                 <h1 className="text-6xl lg:text-8xl font-black text-white mb-6 dynamic-glow-primary">
-                  Digital <span className="dynamic-text-primary animate-pulse">Nexus</span>
+                  The Veiled <span className="dynamic-text-primary">Nexus</span>
                 </h1>
                 <p className="text-2xl text-white/80 mb-8 dynamic-glow-accent">
-                  Connect with the digital architect
+                  Where consciousness converges with the digital realm
                 </p>
-                <div className="w-32 h-1 dynamic-gradient-2 mx-auto rounded-full dynamic-shadow-primary animate-pulse"></div>
+                <div className="w-32 h-1 dynamic-gradient-2 mx-auto rounded-full dynamic-shadow-primary"></div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-fade-in">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {contactMethods.map((method, index) => (
                   <a
                     key={index}
                     href={method.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="dynamic-glass rounded-3xl p-8 hover:scale-110 hover:rotate-1 transition-all duration-500 dynamic-shadow-primary group animate-fade-in"
-                    style={{ animationDelay: `${index * 200}ms` }}
+                    className="dynamic-glass rounded-3xl p-8 hover:scale-105 transition-all duration-500 dynamic-shadow-primary group"
                   >
                     <div className="flex items-start space-x-6">
-                      <div className={`w-16 h-16 ${method.color} rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-125 group-hover:rotate-12 transition-transform dynamic-shadow-accent animate-pulse`}>
+                      <div className={`w-16 h-16 ${method.color} rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform dynamic-shadow-accent`}>
                         <method.icon className="w-8 h-8 text-white" />
                       </div>
                       <div className="flex-1">
@@ -515,24 +521,24 @@ export default function DynamicApp() {
                         <p className="dynamic-text-accent text-lg font-mono mb-3 group-hover:text-white transition-colors">
                           {method.value}
                         </p>
-                        <p className="text-white/70 text-sm leading-relaxed group-hover:text-white/90 transition-colors">
+                        <p className="text-white/70 text-sm leading-relaxed">
                           {method.description}
                         </p>
                       </div>
-                      <ExternalLink className="w-5 h-5 text-white/50 group-hover:dynamic-text-primary group-hover:scale-125 transition-all" />
+                      <ExternalLink className="w-5 h-5 text-white/50 group-hover:dynamic-text-primary transition-colors" />
                     </div>
                   </a>
                 ))}
               </div>
 
               <div className="mt-16 text-center">
-                <div className="dynamic-glass rounded-2xl p-8 dynamic-shadow-primary hover:scale-105 transition-transform duration-500 animate-fade-in delay-500">
+                <div className="dynamic-glass rounded-2xl p-8 dynamic-shadow-primary">
                   <p className="text-white/80 text-lg italic dynamic-glow-accent">
-                    "Knowledge is power. <br />
-                    Digital mastery is everything."
+                    "The only true wisdom is in knowing you know nothing. <br />
+                    But for me, knowing everything is just the beginning."
                   </p>
                   <div className="flex items-center justify-center mt-6 space-x-3">
-                    <div className="w-8 h-8 dynamic-gradient-2 rounded-full flex items-center justify-center dynamic-shadow-accent animate-spin">
+                    <div className="w-8 h-8 dynamic-gradient-2 rounded-full flex items-center justify-center dynamic-shadow-accent">
                       <Crown className="w-4 h-4 text-white" />
                     </div>
                     <span className="dynamic-text-primary font-bold">- LORD</span>
