@@ -108,15 +108,26 @@ export async function registerRoutes(app: Express): Promise<Server> {
         console.log(`Using known avatar hash: ${knownAvatarHash}`);
         const realAvatarUrl = `https://cdn.discordapp.com/avatars/${userId}/${knownAvatarHash}.png?size=256&t=${timestamp}`;
         
-        return res.json({
-          avatarUrl: realAvatarUrl,
-          username: 'LORDX679',
-          discriminator: '0000',
-          lastUpdated: timestamp,
-          method: 'known_hash_direct',
-          hasRealAvatar: true,
-          message: 'يتم عرض صورتك المحفوظة'
-        });
+        // Verify the avatar URL is actually accessible before using it
+        try {
+          const verifyResponse = await fetch(realAvatarUrl, { method: 'HEAD' });
+          if (verifyResponse.ok) {
+            console.log('Known avatar hash verified successfully');
+            return res.json({
+              avatarUrl: realAvatarUrl,
+              username: 'LORDX679',
+              discriminator: '0000',
+              lastUpdated: timestamp,
+              method: 'known_hash_verified',
+              hasRealAvatar: true,
+              message: 'يتم عرض صورتك المحفوظة'
+            });
+          } else {
+            console.log(`Known avatar hash verification failed: ${verifyResponse.status}`);
+          }
+        } catch (verifyError) {
+          console.log('Avatar hash verification failed:', verifyError);
+        }
       }
 
       // Method 5: Try common Discord avatar formats for your user ID
@@ -182,12 +193,44 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const defaultAvatarIndex = parseInt(userId) % 5;
       const defaultAvatarUrl = `https://cdn.discordapp.com/embed/avatars/${defaultAvatarIndex}.png?t=${timestamp}`;
 
+      // Verify the default avatar URL is accessible (it should always be)
+      try {
+        const defaultVerifyResponse = await fetch(defaultAvatarUrl, { method: 'HEAD' });
+        if (!defaultVerifyResponse.ok) {
+          console.error(`Default avatar verification failed: ${defaultVerifyResponse.status}`);
+          // Use a guaranteed fallback without timestamp if the timestamped version fails
+          const guaranteedFallback = `https://cdn.discordapp.com/embed/avatars/${defaultAvatarIndex}.png`;
+          return res.json({
+            avatarUrl: guaranteedFallback,
+            username: 'LORDX679',
+            discriminator: '0000',
+            lastUpdated: timestamp,
+            method: 'guaranteed_fallback',
+            hasRealAvatar: false,
+            message: 'استخدام الصورة الافتراضية'
+          });
+        }
+      } catch (defaultVerifyError) {
+        console.error('Default avatar verification error:', defaultVerifyError);
+        // Use absolute guaranteed fallback
+        const guaranteedFallback = `https://cdn.discordapp.com/embed/avatars/0.png`;
+        return res.json({
+          avatarUrl: guaranteedFallback,
+          username: 'LORDX679',
+          discriminator: '0000',
+          lastUpdated: timestamp,
+          method: 'absolute_fallback',
+          hasRealAvatar: false,
+          message: 'استخدام الصورة الافتراضية المضمونة'
+        });
+      }
+
       return res.json({
         avatarUrl: defaultAvatarUrl,
         username: 'LORDX679',
         discriminator: '0000',
         lastUpdated: timestamp,
-        method: 'default_fallback',
+        method: 'default_verified',
         hasRealAvatar: false,
         message: 'لعرض صورتك الحقيقية، راجع ملف GET_YOUR_DISCORD_INFO.md لمعرفة كيفية الحصول على DISCORD_AVATAR_HASH'
       });
