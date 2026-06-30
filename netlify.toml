@@ -27,3 +27,9 @@
 
 [functions]
   directory = "netlify/functions"
+
+[[headers]]
+  for = "/.well-known/discord"
+  [headers.values]
+    Content-Type = "text/plain"
+    Access-Control-Allow-Origin = "*"
